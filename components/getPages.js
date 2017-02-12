@@ -22,13 +22,12 @@ export function getPages(ebook, callback) {
     let config = {
         uri: URL_PAGES,
         method: 'GET',
-        jar: jar
+        jar: global.CookieLogin
 
 
     }
 
     request(config, (error, response, body) => {
-
         let data = JSON.parse(body);
          callback(data);
 

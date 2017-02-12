@@ -20,7 +20,7 @@ export function downloadEbook(ebook, pages, name, callback) {
     let config = {
         uri: URL_HOST,
         method: 'GET',
-        jar: jar
+        jar: global.CookieLogin
     }
 
 
@@ -47,11 +47,10 @@ export function downloadEbook(ebook, pages, name, callback) {
 
             console.log('\x1b[32m', '    Baixando Pagina    ' + index + '\u2713', '\x1b[0m');
 
-            config.uri = URL_HOST + itemLink +'jpeg';
+            config.uri = URL_HOST + itemLink + 'jpeg';
 
             request(config, (error, response, body) => {
-
-			    cb()
+                cb()
             }).pipe(fs.createWriteStream(name + '/' + name + "_" + index + '.jpeg'));
 
 

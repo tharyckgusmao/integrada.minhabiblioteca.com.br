@@ -8,9 +8,10 @@ let params = process.argv.slice(2);
 
 let ebook = params[0];
 let name = params[1];
+let username = params[2];
+let pass = params[3];
 
-
-login(null,null,() => {
+login(username,pass,() => {
 
 	getPages(ebook,(pages)=>{
 

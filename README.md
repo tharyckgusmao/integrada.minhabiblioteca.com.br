@@ -3,6 +3,8 @@
 
 
 Comandos para download de livros e converçao para PDF:
+(NAO SUPORTA LIVROS EPUB AINDA)
+	
 
 Requisitos para converter baixar imagemagic;
 

@@ -18,7 +18,7 @@ export function login(username=null, password=null,callback) {
         jar:jar
 
     }
-
+    console.log(config)
     request.get(URL_LOGIN, (error, response, body) => {
         
         let $ = cheerio.load(body);
