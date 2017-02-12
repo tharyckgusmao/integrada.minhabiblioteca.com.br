@@ -13,7 +13,7 @@ www.imagemagick.org
 ```
 npm run start <id do livro> <Nome de saida> <usuario> <senha>
 
-exemplo: npm run start 19154842 Livro_Makerting a22473191@fumec.edu.br  123456
+exemplo: npm run start 19154842 Livro_Makerting a22473191@fumec.edu.br 123456
 
 
 ```
