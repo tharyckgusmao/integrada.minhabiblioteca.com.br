@@ -15,7 +15,7 @@ www.imagemagick.org
 ```
 npm run start <id do livro> <Nome de saida> <usuario> <senha>
 
-exemplo: npm run start 19154842 Livro_Makerting a22473191@fumec.edu.br 123456
+exemplo: npm run start 978-85-216-2146-1 Inteligência_Artificial_Uma_Abordagem_de_Aprendizado_de_Máquina a224731971@fumec.edu.br 224731971
 
 
 ```

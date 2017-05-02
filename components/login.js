@@ -18,9 +18,8 @@ export function login(username=null, password=null,callback) {
         jar:jar
 
     }
-    console.log(config)
     request.get(URL_LOGIN, (error, response, body) => {
-        
+
         let $ = cheerio.load(body);
         let token = $('meta[name=csrf-token]').attr("content");
 
@@ -38,7 +37,7 @@ export function login(username=null, password=null,callback) {
 
       		  console.log('\x1b[32m', 'Login Efetuado \u2713' ,'\x1b[0m');
       		  console.log('\n');
-      		  
+
   			  callback();
 
   		 })
