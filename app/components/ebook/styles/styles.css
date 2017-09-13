@@ -1,0 +1,142 @@
+.ebook-ctn{
+  margin-top: 2.5em;
+  height: 70vh;
+  overflow: auto;
+}
+
+.ebook-ctn ul {
+  list-style: none;
+  margin: 0px;
+}
+
+.ebook-ctn  ul li {
+  width: Calc(20% - 30px);
+  margin-right: 30px;
+  display: inline-block;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.ebook-ctn .ebook--item--cover{
+  padding: 15px;
+  background-color: rgba(85, 85, 105, 0.31);
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  min-height: 210px;
+  align-items: center;
+  display: flex;
+
+}
+
+.ebook-ctn .ebook--item--cover img{
+  width:100%
+}
+.ebook-ctn .ebbok--title {
+  margin-top: 9px;
+  line-height: normal;
+  font-size: 0.9em;
+  padding: 0px 2px;
+  margin-bottom: 7px;
+}
+.ebook-ctn .ebbok--author {
+  color: #e2e2e2;
+}
+
+.ebook-item--download{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  opacity: 0;
+  transition: 0.5s all;
+  cursor: pointer;
+}
+.ebook-item--download:hover{
+  opacity: 1;
+}
+.ebook--glass{
+  background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255, 255, 255, 0) 9%, rgb(8, 8, 8) 100%);
+  width: 100%;
+  height: 100%;
+}
+
+.ebook--btndl{
+  position: absolute;
+  bottom: 9%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.ebook--button---circle{
+
+  width: 50px;
+  height: 50px;
+  background-color: #ffffff;
+  border-radius: 100%;
+  display: block;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* position: absolute; */
+  font-size: 2em;
+  color: #1bc2ea;
+  font-weight: bold;
+  transition: 0.5s all;
+  transform: scale(0.9);
+
+}
+
+.ebook--btndl:hover .ebook--button---circle {
+  transform: scale(1.1);
+  background-color: #dedede;
+  color: #1bc2ea;
+
+}
+
+
+.ebook--button---tooltip{
+
+  position: absolute;
+  top: -68px;
+  text-align: center;
+  background-color: white;
+  padding: 5px 10px;
+  left: -14px;
+  color: #035367;
+  font-size: 1em;
+  font-weight: bolder;
+  border-radius: 5px;
+  border: 1px solid rgba(14, 101, 121, 0.64);
+  transform-origin: bottom;
+  transform: translateY(12px) rotate(2deg);
+  opacity: 0;
+  transition: 0.5s all;
+}
+.ebook--button---tooltip:after{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -9px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: #fff transparent transparent transparent;
+}
+
+.ebook--btndl:hover .ebook--button---tooltip{
+  transform: translateY(0px) rotate(0deg);
+  opacity: 1;
+}
+
+.ebook--notfound{
+  width: 100%;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  text-align: center;
+  font-size: 1em;
+  text-transform: uppercase;
+}
