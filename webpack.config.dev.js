@@ -1,6 +1,7 @@
 let path = require('path');
 let webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var StringReplacePlugin = require("string-replace-webpack-plugin");
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
@@ -18,11 +19,12 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.IgnorePlugin(/vertx/),
     new HtmlWebpackPlugin({
-         template: 'app/index.tpl.html',
-         inject: 'body',
-         filename: 'index.html'
-       }),
+      template: 'app/index.tpl.html',
+      inject: 'body',
+      filename: 'index.html'
+    }),
   ],
   module: {
     loaders: [
@@ -32,7 +34,7 @@ module.exports = {
         loader: 'babel-loader',
         options: {
           babelrc: false,
-          presets: ['es2015', 'react', 'stage-0'],
+          presets: ['es2015','react', "stage-0"],
           plugins: ['react-hot-loader/babel'],
         },
       },
@@ -47,7 +49,44 @@ module.exports = {
       ,{
         test: /\.(jpg|png|gif)$/,
         loader:    'file-loader'
-      }
+      },
+      {test: /pdfkit[\/\\]js[\/\\]mixins[\/\\]fonts.js$/, loader: StringReplacePlugin.replace({
+        replacements: [
+          {
+            pattern: 'return this.font(\'Helvetica\');',
+            replacement: function () {
+              return '';
+            }
+          }
+        ]})
+      },
+      {test: /fontkit[\/\\]index.js$/, loader: StringReplacePlugin.replace({
+        replacements: [
+          {
+            pattern: /fs\./g,
+            replacement: function () {
+              return 'require(\'fs\').';
+            }
+          }
+        ]})
+      },
+      /* hack for Web Worker support */
+      {test: /FileSaver.js$/, loader: StringReplacePlugin.replace({
+        replacements: [
+          {
+            pattern: 'doc.createElementNS("http://www.w3.org/1999/xhtml", "a")',
+            replacement: function () {
+              return 'doc ? doc.createElementNS("http://www.w3.org/1999/xhtml", "a") : []';
+            }
+          }
+        ]})
+      },
+      {enforce: 'post', test: /fontkit[\/\\]index.js$/, loader: "transform-loader?brfs"},
+      {enforce: 'post', test: /unicode-properties[\/\\]index.js$/, loader: "transform-loader?brfs"},
+      {enforce: 'post', test: /linebreak[\/\\]src[\/\\]linebreaker.js/, loader: "transform-loader?brfs"}
+
+
+
     ]
   }
 }

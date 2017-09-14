@@ -52,9 +52,9 @@ export default class Loading extends Component {
       </div>
     ) : <div className={Styles['preloading-ctn--wrapper']}>
       <h3>{this.props.statusText}</h3>
-      <h3>{((this.props.percent * 100) / this.props.size).toFixed(2) || 0 } %</h3>
-      <span className={Styles['preloading']} >
-      </span>
+      {this.props.complete == false ? <h3>{((this.props.percent * 100) / this.props.size).toFixed(2) || 0 } %</h3>:null}
+      {this.props.complete == false ? <span className={Styles['preloading']}></span> :null}
+
     </div>
 
     return(

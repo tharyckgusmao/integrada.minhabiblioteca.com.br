@@ -5,7 +5,7 @@ import App from '../containers/App';
 import Home from '../containers/Home';
 
 export const routes =  (
-    <Route path="/" component={App}>
+  <Route path="/" component={App}>
     <IndexRoute component={Home}/>
   </Route>
   );

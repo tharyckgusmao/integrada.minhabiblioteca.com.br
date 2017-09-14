@@ -4,6 +4,7 @@ import {
   LOGIN_USER_FAILURE
 } from '../types/auth';
 
+import {ebooksFeetchFeetch} from './ebooks';
 import {default as rp}  from 'request-promise';
 import cheerio from 'cheerio';
 
@@ -78,12 +79,16 @@ export function loginUserFeetch(email, password) {
 
 
           if(response.statusCode != 302){
+
             dispatch(loginUserSuccess({
               response:{
                 message: 'success'
               },
               cookie: jar
             }));
+
+            // dispatch(ebooksFeetchFeetch(jar));
+
 
           }else{
 

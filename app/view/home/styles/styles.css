@@ -72,3 +72,14 @@
   background-color: #01a8d0
 
 }
+.footer{
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+}
+
+.footer a {
+  text-decoration: none;
+  font-size: 0.9em;
+  color: #fff
+}

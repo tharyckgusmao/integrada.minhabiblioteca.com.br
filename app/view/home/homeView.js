@@ -16,10 +16,29 @@ export default class home extends Component{
       max: data.books.length,
       search: '',
       loading: null,
-      statusText: 'Carregando Filtro'
+      statusText: 'Carregando Livros'
     }
 
   }
+
+  // componentWillReceiveProps(newProps) {
+  //
+  //   if(newProps.ebooks.ebooks != undefined){
+  //
+  //
+  //     this.setState({
+  //       data: newProps.ebooks.ebooks,
+  //       dataFiltered: newProps.ebooks.ebooks.slice(0,15) ,
+  //       max: newProps.ebooks.ebooks.length
+  //     });
+  //
+  //
+  //   }
+  //
+  //
+  //
+  // }
+
 
   _loadMoreEbooks = () => {
 
@@ -139,6 +158,7 @@ export default class home extends Component{
         </div>
 
         <EbookComponent ref="ebookComponent" auth={this.props.auth} ebooks={this.state.dataFiltered} _loadMoreEbooks={()=>{this._loadMoreEbooks()}} filtering={this.state.loading || this.props.auth.isAuthenticated == null} statusText={this.state.statusText}/>
+        <span className={Styles['footer']}><a href="https://github.com/tharyckgusmao/integrada.minhabiblioteca.com.br">Github Tharyck Gusmao</a></span>
 
         { this.props.auth.isAuthenticated == null || this.props.auth.isAuthenticated == false? <LoginComponent _loginUser={(login,pass)=>{this._loginUser(login,pass)}} load={this.props.auth.isAuthenticating || false } authenticated={this.props.auth.status} statusText="Aguarde..."/> : null}
 

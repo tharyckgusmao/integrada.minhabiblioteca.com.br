@@ -1,6 +1,6 @@
 import React from 'react'
 import { AppContainer } from 'react-hot-loader'
-import { Router, browserHistory } from 'react-router';
+import { Router, hashHistory } from 'react-router';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { syncHistoryWithStore } from 'react-router-redux';
@@ -15,7 +15,7 @@ import Root from './containers/Root';
 
 
 const store = configureStore();
-const history = syncHistoryWithStore(browserHistory, store);
+const history = syncHistoryWithStore(hashHistory, store);
 
 
 
