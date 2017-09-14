@@ -16,6 +16,7 @@ module.exports = {
     filename: '[name]-[hash].min.js',
     publicPath: './'
   },
+
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
@@ -47,58 +48,58 @@ module.exports = {
             "react",
             "es2015",
             "stage-0"]
+          },
         },
-      },
-      {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract({
-          fallback:'style-loader',
-          use:'css-loader?sourceMap&modules&importLoaders=1&localIdentName=__[hash:base64:5]!postcss-loader'
-        })
-      },
-      {
-        test: /\.(eot|svg|ttf|woff|woff2)$/,
-        loader: 'file-loader',
-      }
-      ,{
-        test: /\.(jpg|png|gif)$/,
-        loader:    'file-loader'
-      },
-      {test: /pdfkit[\/\\]js[\/\\]mixins[\/\\]fonts.js$/, loader: StringReplacePlugin.replace({
-        replacements: [
-          {
-            pattern: 'return this.font(\'Helvetica\');',
-            replacement: function () {
-              return '';
+        {
+          test: /\.css$/,
+          loader: ExtractTextPlugin.extract({
+            fallback:'style-loader',
+            use:'css-loader?sourceMap&modules&importLoaders=1&localIdentName=__[hash:base64:5]!postcss-loader'
+          })
+        },
+        {
+          test: /\.(eot|svg|ttf|woff|woff2)$/,
+          loader: 'file-loader',
+        }
+        ,{
+          test: /\.(jpg|png|gif)$/,
+          loader:    'file-loader'
+        },
+        {test: /pdfkit[\/\\]js[\/\\]mixins[\/\\]fonts.js$/, loader: StringReplacePlugin.replace({
+          replacements: [
+            {
+              pattern: 'return this.font(\'Helvetica\');',
+              replacement: function () {
+                return '';
+              }
             }
-          }
-        ]})
-      },
-      {test: /fontkit[\/\\]index.js$/, loader: StringReplacePlugin.replace({
-        replacements: [
-          {
-            pattern: /fs\./g,
-            replacement: function () {
-              return 'require(\'fs\').';
+          ]})
+        },
+        {test: /fontkit[\/\\]index.js$/, loader: StringReplacePlugin.replace({
+          replacements: [
+            {
+              pattern: /fs\./g,
+              replacement: function () {
+                return 'require(\'fs\').';
+              }
             }
-          }
-        ]})
-      },
-      /* hack for Web Worker support */
-      {test: /FileSaver.js$/, loader: StringReplacePlugin.replace({
-        replacements: [
-          {
-            pattern: 'doc.createElementNS("http://www.w3.org/1999/xhtml", "a")',
-            replacement: function () {
-              return 'doc ? doc.createElementNS("http://www.w3.org/1999/xhtml", "a") : []';
+          ]})
+        },
+        /* hack for Web Worker support */
+        {test: /FileSaver.js$/, loader: StringReplacePlugin.replace({
+          replacements: [
+            {
+              pattern: 'doc.createElementNS("http://www.w3.org/1999/xhtml", "a")',
+              replacement: function () {
+                return 'doc ? doc.createElementNS("http://www.w3.org/1999/xhtml", "a") : []';
+              }
             }
-          }
-        ]})
-      },
-      {enforce: 'post', test: /fontkit[\/\\]index.js$/, loader: "transform-loader?brfs"},
-      {enforce: 'post', test: /unicode-properties[\/\\]index.js$/, loader: "transform-loader?brfs"},
-      {enforce: 'post', test: /linebreak[\/\\]src[\/\\]linebreaker.js/, loader: "transform-loader?brfs"}
+          ]})
+        },
+        {enforce: 'post', test: /fontkit[\/\\]index.js$/, loader: "transform-loader?brfs"},
+        {enforce: 'post', test: /unicode-properties[\/\\]index.js$/, loader: "transform-loader?brfs"},
+        {enforce: 'post', test: /linebreak[\/\\]src[\/\\]linebreaker.js/, loader: "transform-loader?brfs"}
 
-    ]
-  },
-};
+      ]
+    },
+  };

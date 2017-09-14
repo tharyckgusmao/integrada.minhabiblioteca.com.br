@@ -7,6 +7,7 @@ import fs from 'fs';
 import async from 'async';
 import { remote } from 'electron';
 import {convert} from '../../utils/convert.js';
+import resizer from 'resizer';
 
 
 const URL_HOST = "https://jigsaw.vitalsource.com/api/v0/";
@@ -32,6 +33,15 @@ export default class EbookItemComponent extends Component{
     this.setState({
       loadingImg: false
     })
+
+
+
+  }
+
+
+  _test = () =>{
+
+    convert("PDF",'/run/media/thaka/Backup/Empresa/Projetos/lab/bibliotecaFumecV2/livros/9788520453339','teste',()=>{});
 
   }
 
@@ -171,7 +181,9 @@ export default class EbookItemComponent extends Component{
               });
 
 
-            }).pipe(fs.createWriteStream(folderPath + '/'+ self.props.data.isbn + '/temp/' + self.props.data.title + "___" + item.cfi.replace('/','') + '.jpeg'));
+            })
+            .pipe(fs.createWriteStream(folderPath + '/'+ self.props.data.isbn + '/temp/' + self.props.data.title + "___" + item.cfi.replace('/','') + '.jpeg'));
+
 
 
           });
