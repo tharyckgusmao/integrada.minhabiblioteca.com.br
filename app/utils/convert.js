@@ -19,13 +19,18 @@ export function convert(type = 'PDF', folderPath,name,cb){
 
     });
 
-    let doc = new pdfkit();
+    let doc = new pdfkit({
+      size: [596, 842]
+    });
     doc.pipe(fs.createWriteStream(folderPath+'/'+name+'.pdf'));
 
     files.forEach((el)=>{
         doc.addPage()
-        .image(el)
-        .text('Proportional to width', 0, 0);
+        .image(el,{
+          fit: [596, 842],
+          align: 'center',
+          valign: 'center'
+      });
 
     })
 
