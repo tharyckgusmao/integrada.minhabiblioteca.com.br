@@ -139,7 +139,7 @@ export default class home extends Component{
 
   _loginUser = (login,pass) =>{
 
-    this.props.loginUserFeetch('a224731971@fumec.edu.br','Mail*9*9')
+    this.props.loginUserFeetch(login,pass)
 
   }
 
