@@ -1,4 +1,8 @@
-# integrada.minhabiblioteca.com.br V2
+# integrada.minhabiblioteca.com.br V2 <Login Not Work - Google Captcha>
+
+#### A plataforma implementou google captcha para evitar o crawler implementarei uma correçao para burla em breve. Obrigado.
+
+#### The platform implemented google captcha to avoid the crawler, I will implement a cheat correction soon. Thank you.
 
 ![Example Crawler](https://github.com/tharyckgusmao/integrada.minhabiblioteca.com.br/blob/master/images/runApp.png)
 
